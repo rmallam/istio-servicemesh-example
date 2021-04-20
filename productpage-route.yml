@@ -1,0 +1,21 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  labels:
+    app: productpage
+  name: productpage-bookinfo-route
+spec:
+  host: productpage.apps.cluster-8a4c.8a4c.sandbox1190.opentlc.com
+  port:
+    targetPort: https
+  tls:
+    termination: passthrough
+  to:
+    kind: Service
+    name: istio-ingressgateway
+    weight: 100
+  wildcardPolicy: None
+
